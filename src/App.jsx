@@ -5,6 +5,7 @@ import { LoginScreen } from './Screens/LoginScreen/LoginScreen'
 import AuthMiddleware from './Middlewares/AuthMiddleware'
 import HomeScreen from './Screens/HomeScreen/HomeScreen'
 import CreateWorkspaceScreen from './Screens/CreateWorkspaceScreen/CreateWorkspaceScreen'
+import WorkspaceDetailScreen from './Screens/WorkspaceDetailScreen/WorkspaceDetailScreen'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           path='/workspace/new' 
           element={<CreateWorkspaceScreen/>} 
         />
+        <Route path='/workspace/:workspace_id' element={<WorkspaceDetailScreen/>}  />
       </Route>
     </Routes>
 

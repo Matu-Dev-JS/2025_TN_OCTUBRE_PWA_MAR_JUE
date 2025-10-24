@@ -36,10 +36,46 @@ async function createWorkspace(name, url_img = "") {
         body: JSON.stringify(body),
     });
     const response_data = await response_http.json();
-    if(!response_data.ok){
+    if (!response_data.ok) {
         throw new Error(response_data.message)
     }
     return response_data;
 }
 
-export { getWorkspaceList, createWorkspace }
+async function getWorkspaceById(workspace_id) {
+    const response_http = await fetch(
+        ENVIRONMENT.URL_API + "/api/workspace/" + workspace_id,
+        {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + getAuthorizationToken(),
+            },
+        }
+    );
+    const response_data = await response_http.json();
+    if (!response_data.ok) {
+        throw new Error(response_data.message || "Error al obtener el workspace")
+    }
+    return response_data
+}
+
+async function inviteUser (email, workspace_id){
+    const response_http = await fetch(
+        ENVIRONMENT.URL_API + "/api/workspace/" + workspace_id + "/invite",
+        {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+                'Authorization': `Bearer ${getAuthorizationToken()}`
+            },
+            body: JSON.stringify({invited_email: email})
+        }
+    )
+    const response_data = await response_http.json()
+    if (!response_data.ok) {
+        throw new Error(response_data.message)
+    }
+    return response_data
+}
+
+export { getWorkspaceList, createWorkspace, getWorkspaceById, inviteUser}
