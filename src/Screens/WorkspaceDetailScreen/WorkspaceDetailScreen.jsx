@@ -3,9 +3,10 @@ import { useParams } from 'react-router'
 import useFetch from '../../hooks/useFetch'
 import { getWorkspaceById } from '../../services/workspaceService'
 import InviteUserForm from '../../Components/InviteUserForm/InviteUserForm'
+import ChannelList from '../../Components/ChannelList/ChannelList'
 
 const WorkspaceDetailScreen = () => {
-    const { workspace_id } = useParams()
+    const { workspace_id, channel_id } = useParams()
 
     const { sendRequest, response, error, loading } = useFetch()
     useEffect(
@@ -30,7 +31,10 @@ const WorkspaceDetailScreen = () => {
                 )
             }
             <InviteUserForm workspace_id={workspace_id} />
-
+            {
+                channel_id &&
+                <ChannelList/>
+            }
         </div>
     )
 }
