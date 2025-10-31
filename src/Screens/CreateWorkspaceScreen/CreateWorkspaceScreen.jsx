@@ -15,7 +15,7 @@ const CreateWorkspaceScreen = () => {
 
 
     const onSubmit = (form_data) => {
-        console.log(form_data)
+
         sendRequest(
             async () => {
                 return await createWorkspace(form_data.workspace_name, '')
