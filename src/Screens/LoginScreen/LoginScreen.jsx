@@ -41,6 +41,7 @@ export const LoginScreen = () => {
           localStorage.setItem(LOCALSTORAGE_KEYS.AUTH_TOKEN, response.data.authorization_token)
           navigate('/home')
         }
+        
       },
       [response]
     )
