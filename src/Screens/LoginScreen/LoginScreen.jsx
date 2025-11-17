@@ -38,7 +38,7 @@ export const LoginScreen = () => {
         console.log(response)
         if(response && response.ok){
           //Guardamos el token emitido por el backend, para despues usarlo como credencial
-          localStorage.setItem(LOCALSTORAGE_KEYS.AUTH_TOKEN, response.data.authorization_token)
+          localStorage.setItem(LOCALSTORAGE_KEYS.AUTH_TOKEN, response.body.auth_token)
           navigate('/home')
         }
         

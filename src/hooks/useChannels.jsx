@@ -23,10 +23,10 @@ function useChannels (){
         )
     }
 
-    async function createChannel (name){
+    async function createChannel (form_state){
         sendRequest(
             async () => {
-                return createNewChannel(workspace_id, name)
+                return createNewChannel(workspace_id, form_state.channel_name)
             }
         )
     }
